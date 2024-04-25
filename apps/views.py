@@ -10,12 +10,12 @@ def index(request):
 
 
 def about(request):
-    return HttpResponse("Salom about bo'limiga xush kelibsiz!")
+    return render(request, "about.html")
 
 
 def contact(request):
-    return HttpResponse("Salom contact bo'limiga xush kelibsiz!")
+    return render(request, "contact.html")
 
 
 def home(request):
-    return HttpResponse("Salom home bo'limiga xush kelibsiz!")
+    return render(request, 'homepage.html')
