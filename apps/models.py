@@ -10,3 +10,10 @@ class Product(models.Model):
         return self.title
 
 
+class Post(models.Model):
+    title = models.CharField(max_length=255)
+    time = models.DateTimeField(auto_now_add=True)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title

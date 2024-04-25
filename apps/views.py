@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from apps.models import Product
+from apps.models import Product, Post
 
 
 def index(request):
@@ -19,3 +18,9 @@ def contact(request):
 
 def home(request):
     return render(request, 'homepage.html')
+
+
+def new(request):
+    posts = {}
+    posts["posts"] = Post.objects.all()
+    return render(request, 'new.html', posts)
