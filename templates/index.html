@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog</title>
+</head>
+<body>
+
+    {% for data in dataset %}
+        <h2>{{ data.name }}</h2>
+        <small>{{ data.price }}</small>
+        <p>{{ data.title }}</p>  
+    {% endfor %}
+</body>
+</html>
