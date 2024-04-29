@@ -24,3 +24,7 @@ def new(request):
     posts = {}
     posts["posts"] = Post.objects.all()
     return render(request, 'new.html', posts)
+
+
+def blog(request):
+    return render(request, "Blog.html")
