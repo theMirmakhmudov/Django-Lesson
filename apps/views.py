@@ -28,3 +28,7 @@ def new(request):
 
 def blog(request):
     return render(request, "Blog.html")
+
+
+def blog2(request):
+    return render(request, "Blog2.html")
