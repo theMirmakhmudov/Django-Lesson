@@ -62,7 +62,7 @@
         .active {
             background-color: #2649e8;
             height: 80px;
-            margin-top: -5px;
+            margin-top: -3px;
         }
 
         /* Create two unequal columns that floats next to each other */
@@ -82,8 +82,16 @@
         /* Fake image */
         .fakeimg {
             background-color: #aaa;
-            width: 100%;
+            width: 50%;
             padding: 20px;
+
+        }
+
+        .leftcolumn img {
+            width: 60%;
+            height: 400px;
+            margin: auto;
+            background-color: white;
         }
 
         /* Add a card effect for articles */
@@ -91,7 +99,21 @@
             background-color: white;
             padding: 20px;
             margin-top: 20px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+
         }
+
+        .leftcolumn {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+
+        }
+
 
         /* Clear floats after the columns */
         .row:after {
@@ -107,12 +129,12 @@
         }
 
         /* Footer */
-        .footer {
-            padding: 20px;
-            text-align: center;
-            background: #ddd;
-            margin-top: 20px;
-        }
+        {#.footer {#}
+        {#    padding: 20px;#}
+        {#    text-align: center;#}
+        {#    background: #ddd;#}
+        {#    margin-top: 20px;#}
+        {#}#}
 
         /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
         @media screen and (max-width: 800px) {
@@ -139,41 +161,22 @@
 
 <div class="row">
     <div class="leftcolumn">
+        {% for post in dataset %}
         <div class="card">
-            <h2>TITLE HEADING</h2>
-            <h5>Title description, Dec 7, 2017</h5>
-            <div class="fakeimg" style="height:200px;">Image</div>
-            <p>Some text..</p>
-            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco.</p>
+            <h2>{{ post.title }}</h2>
+            <h5>{{ post.time }}</h5>
+            <img class="fakeimg"
+                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR02rk1jv3amlIRQbj2CwsqyDc1gx4PW1_2yoQBr0kKdA&s">
+
+            <p> {{ post.description }}</p>
         </div>
-        <div class="card">
-            <h2>TITLE HEADING</h2>
-            <h5>Title description, Sep 2, 2017</h5>
-            <div class="fakeimg" style="height:200px;">Image</div>
-            <p>Some text..</p>
-            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco.</p>
-        </div>
-    </div>
-    <div class="rightcolumn">
-        <div class="card">
-            <h2>About Me</h2>
-            <div class="fakeimg" style="height:100px;">Image</div>
-            <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-        </div>
-        <div class="card">
-            <h3>Follow Me</h3>
-            <p>Some text..</p>
-        </div>
+        {% endfor %}
     </div>
 </div>
 
-<div class="footer">
-    <h2>Footer</h2>
-</div>
+<!--<div class="footer">-->
+<!--    <h2>Footer</h2>-->
+<!--</div>-->
 
 </body>
 </html>

@@ -31,4 +31,6 @@ def blog(request):
 
 
 def blog2(request):
-    return render(request, "Blog2.html")
+    post = {}
+    post["dataset"] = Post.objects.all()
+    return render(request, "Blog2.html", post)
