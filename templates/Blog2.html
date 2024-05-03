@@ -127,14 +127,7 @@
             background-color: black;
             margin-left: -90px;
         }
-
-        /* Footer */
-        {#.footer {#}
-        {#    padding: 20px;#}
-        {#    text-align: center;#}
-        {#    background: #ddd;#}
-        {#    margin-top: 20px;#}
-        {#}#}
+        
 
         /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
         @media screen and (max-width: 800px) {
@@ -166,7 +159,7 @@
             <h2>{{ post.title }}</h2>
             <h5>{{ post.time }}</h5>
             <img class="fakeimg"
-                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR02rk1jv3amlIRQbj2CwsqyDc1gx4PW1_2yoQBr0kKdA&s">
+                 src="{{ post.image.url }}">
 
             <p> {{ post.description }}</p>
         </div>
