@@ -73,58 +73,52 @@
             align-items: center;
         }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        input[type=text], select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-top: 6px;
-            margin-bottom: 16px;
-            resize: vertical;
-        }
-
-        input[type=submit] {
-            background-color: #04AA6D;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        input[type=submit]:hover {
-            background-color: #45a049;
-        }
-
-        .pdp-icon {
-            border-radius: 50%;
-            background-color: black;
-            margin-left: 20px;
-            position: absolute;
-            top: 20px;
-        }
-
-        .container {
-            border-radius: 5px;
-            width: 50%;
-            margin: auto;
-            background-color: #f2f2f2;
-            padding: 20px;
-            position: absolute;
-            top: 50%;
+        .leftcolumn {
+            width: 75%;
+            position: relative;
             left: 50%;
-            transform: translate(-50%,-50%);
+            transform: translate(-50%);
+
         }
 
+
+        /* Fake image */
+        .fakeimg {
+            background-color: #aaa;
+            width: 50%;
+            padding: 20px;
+
+        }
+
+        .leftcolumn img {
+            width: 60%;
+            height: 400px;
+            margin: auto;
+            background-color: white;
+        }
+
+        /* Add a card effect for articles */
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin-top: 150px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+
+        }
+
+
+
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
     </style>
 </head>
 <body>
@@ -137,19 +131,28 @@
 
 <ul>
     <li><a href=".">Home</a></li>
-    <li><a href="news">News</a></li>
-    <li><a class="active" href="contact">Contact</a></li>
+    <li><a class="active" href="news">News</a></li>
+    <li><a href="contact">Contact</a></li>
 </ul>
 
-<div class="container">
-    <h3 style="text-align: center">Contact Form</h3>
-    <form method="post" action="{% url 'contact' %}">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Submit">
-    </form>
-</div>
+<div class="row">
+    <div class="leftcolumn">
 
+        {% for post in dataset %}
+            <div class="card">
+                <h2> {{ post.title }} </h2>
+                <h5>{{ post.time }}</h5>
+                {% if post.image %}
+                    <img class="fakeimg"
+                         src="{{ post.image.url }}">
+                {% else %}
+                    <img class="fakeimg" src="{{ post.image_url }}">
+                {% endif %}
+                <p> {{ post.description }} </p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 
 </body>
 </html>
